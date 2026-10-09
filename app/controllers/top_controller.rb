@@ -11,7 +11,9 @@ class TopController < ApplicationController
     uid = params[:uid]
     pass = params[:pass]
 
-    if User.exists?(uid: uid, pass: pass)
+    user = User.find_by(uid: uid)
+
+    if !user.nil? && BCrypt::Password.new(user.pass) == pass
       session[:login_uid] = uid
       redirect_to main_path
     else
@@ -25,7 +27,7 @@ class TopController < ApplicationController
   end
 
   def register
-    user = User.new(uid: params[:uid], pass: params[:pass])
+    user = User.new(uid: params[:uid], pass: BCrypt::Password.create(params[:pass]))
     if user.save
       session[:login_uid] = user.uid
       redirect_to main_path
