@@ -4,4 +4,10 @@ class ApplicationController < ActionController::Base
 
   # Changes to the importmap will invalidate the etag for HTML responses
   stale_when_importmap_changes
+
+  def L4
+      cookies[:c] ||= 0
+      cookies[:c] = cookies[:c].to_i + 1
+      render plain: cookies[:c]
+  end
 end
