@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get "top/main", as: "main"
   post "top/login"
   root "top#main"
+  get "top/register", to: "top#register_form", as: "register"
+  post "top/register", to: "top#register"
+  get "top/logout", to: "top#logout", as: "logout"
 end

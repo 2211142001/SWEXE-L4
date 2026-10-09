@@ -1,4 +1,4 @@
-<%= form_with url: '/top/login', data: { turbo: false } do |f| %>
+<%= form_with url: '/top/register', data: { turbo: false } do |f| %>
     <p>
         <%= f.label :uid, 'ID' %>
         <%= f.text_field :uid %>
@@ -7,7 +7,7 @@
         <%= f.label :pass, 'パスワード' %>
         <%= f.password_field :pass %>
     </p>
-    <%= f.submit 'ログイン' %>
+    <%= f.submit '登録' %>
 <% end %>
 
-<%= link_to '新規登録', register_path %>
+<%= link_to 'ログイン', main_path %>
